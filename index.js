@@ -9,6 +9,7 @@ import user from "./routes/user";
 import { verifyAccessToken } from "./controllers/authMiddleware";
 import path from "path";
 import { fileURLToPath } from 'url';
+import serverless from 'serverless-http';
 const app = express();
 dotenv.config();
 app.use(cors());
@@ -27,7 +28,9 @@ app.use("/course", verifyAccessToken, course);
 app.use("/lecture", verifyAccessToken, lecture);
 app.use("/user", user);
 
-app.listen(process.env.PORT ?? 5000, () => {
-  console.log("Server started at port " + process.env.PORT ?? 5000);
-  mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true },)
-});
+// app.listen(process.env.PORT ?? 5000, () => {
+//   console.log("Server started at port " + process.env.PORT ?? 5000);
+//   mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true },)
+// });
+
+module.exports.handler = serverless(app);
