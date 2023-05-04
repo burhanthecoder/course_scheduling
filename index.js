@@ -33,4 +33,4 @@ app.use("/user", user);
 //   mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true },)
 // });
 
-module.exports.handler = serverless(app);
+export const handler = serverless(app);
