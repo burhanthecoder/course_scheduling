@@ -1,5 +1,6 @@
 import Lecture from "../models/lecture";
 
+
 export const getAllLecture = async (req, res) => {
   if (req.user.role !== "admin") {
     const lecture = await Lecture.find({
@@ -33,3 +34,5 @@ export const getLectureByName = async (req, res) => {
   const lecture = await Lecture.find({ name: req.params.name });
   res.json(lecture);
 }
+
+
