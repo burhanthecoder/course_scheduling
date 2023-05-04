@@ -55,3 +55,15 @@ export const register = async (req, res) => {
     user: newUser,
   });
 }
+
+
+export const getInstructor = async (req, res) => {
+  const users = await User.find(
+    {
+      role: "instructor",
+    }, {
+    password: 0,
+  }
+  ).exec();
+  res.json(users);
+}
