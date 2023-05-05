@@ -29,9 +29,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'index.html'));
 });
-// app.listen(process.env.PORT ?? 5000, () => {
-//   console.log("Server started at port " + process.env.PORT ?? 5000);
-//   mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true },)
-// });
-
-export const handler = serverless(app);
+app.listen(process.env.PORT ?? 5000, () => {
+  console.log("Server started at port " + process.env.PORT ?? 5000);
+  mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true },)
+});
